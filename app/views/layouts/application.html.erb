@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OLX for Business</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+  <!-- some javascript-->
+  <script>
+  $(document).ready(function(){
+    $(".dropdown").hover(            
+      function() {
+        $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+        $(this).toggleClass('open');        
+      },
+      function() {
+        $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+        $(this).toggleClass('open');       
+      }
+    );
+  });
+  </script>
+  <!-- //some javascript-->
+</body>
+</html>

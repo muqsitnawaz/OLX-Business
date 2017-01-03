@@ -1,0 +1,32 @@
+Sign Up and Sign In
+    - Devise
+
+Homepage
+    - Slider
+    - Search
+        - Index of Business
+
+Business
+    - Information
+    - Ask for Seller Information
+        - Send admin an email about the buyer
+            - Nothing...
+            
+Model
+    - Users
+    - Business
+    
+Comments:
+    - Users have roles
+        - Admin, Buyer, Seller
+    - A business belongs to a user
+    
+    
+Admin Panel
+    - Ask to update information
+        - Success Stories
+        - Business links
+        - Business reports
+        - Business articles
+        
+    - Redirect to homepage

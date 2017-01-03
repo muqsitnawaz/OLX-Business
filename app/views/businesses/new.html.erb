@@ -1,0 +1,104 @@
+<%= render 'layouts/header' %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
+    <div class="main-grid">
+    	<div class="agile-grids">	
+    		<div class="grids">
+    			<div class="forms-grids">
+    				<div class="forms3">
+      				<div class="w3agile-validation w3ls-validation">
+      					<div class="panel panel-widget agile-validation register-form">
+      						<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
+    								<div class="input-info">
+    									<h3 style="color: #00bcd4!important;">Login</h3>
+    								</div>
+    								<div class="form-body form-body-info">
+    									<%= form_for :business, url: businesses_path, :html => {:id => "new_business_form"} do |f| %>
+    									  <!-- form errors-->
+    									  <% if @business.errors.any? %>
+                          <div id="error_explanation">
+                            <h2>
+                              <%= pluralize(@business.errors.count, "error") %> found
+                            </h2>
+                            <ul>
+                              <% @business.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                        <% end %>
+                        <!-- //form errors-->
+    									
+    										<div class="form-group">
+    											<%= f.text_field :name, autofocus: true, class: 'form-control', "required": "true", placeholder: 'Enter your Business Name' %>
+    										</div>
+    										<div class="form-group">
+      		                  <%= f.select :industry, options_for_select(get_all_categories.sort!, :selected => "Accounting & Finance"), {}, { class: 'form-control', "required": "true", "style": "background-color: rgba(20, 21, 22, 0.52);"} %>
+    										</div>
+    										<div class="form-group">
+    										  <p style="margin-bottom: 1em; color: white">Started on:</p>
+    										  <%= f.date_field :started, class: 'form-control', "required": "true" %>
+    										</div>
+    										<div class="form-group">
+    											<%= f.number_field :price, class: 'form-control', "required": "true", placeholder: 'Estimated price of Business' %>
+    										</div>
+    										<div class="form-group">
+    											<%= f.text_field :address, class: 'form-control', "required": "true", placeholder: 'Enter your Business\'s Address' %>
+    										</div>
+    										<div class="form-group">
+    											<%= f.text_field :tehsil, class: 'form-control', "required": "true", placeholder: 'Enter your Business\'s Tehsil' %>
+    										</div>
+    										<div class="form-group">
+    											<%= f.select :state, options_for_select(get_all_cities, :selected => "Karachi"), {}, { class: 'form-control', "required": "true", "style": "background-color: rgba(20, 21, 22, 0.52);"} %>
+    										</div>
+    										<div class="form-group">
+    											<%= f.select :state, options_for_select(["Punjab", "Sindh", "KPK", "Balochistan"], :selected => "Punjab"), {}, { class: 'form-control', "required": "true", "style": "background-color: rgba(20, 21, 22, 0.52);"} %>
+    										</div>
+    										<div class="form-group">
+    											<%= f.number_field :num_employees, class: 'form-control', "required": "true", placeholder: 'Enter number of Employees' %>
+    										</div>
+    										
+    										<!-- submit button-->
+    										<div class="bottom">
+    											<div class="form-group">
+    												<%= f.submit "Save Business", class: "btn btn-primary" %>
+    											</div>
+    											<div class="clearfix"> </div>
+    										</div>
+    										<!-- //submit button-->
+    									<% end %>
+    								</div>
+      						</div>
+      					</div>
+      				</div>
+    				</div> <!--end of forms3-->
+    				<div class="clear"> </div>
+    			</div>
+    		</div>
+    	</div>
+    </div> <!--end of maingrid-->
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>
+
+<%= javascript_include_tag "valida.2.1.6.min", "data-turbolinks-track" => true  %>
+<%= javascript_include_tag "validator.min", "data-turbolinks-track" => true  %>
+
+<script>
+$(document).ready(function(){
+    $('#new_business_form').valida();
+    
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');       
+        }
+    );
+});
+</script>

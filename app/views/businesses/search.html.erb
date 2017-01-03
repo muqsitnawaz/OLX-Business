@@ -1,0 +1,22 @@
+<%= render 'layouts/header' %>
+
+<div class="top-brands">
+	<div class="container">
+		<h3><%= @businesses.count %> RESULT(S) FOUND</h3>
+  		<div class="agile_top_brands_grids">
+  		  <% @businesses.each_with_index do |business, index| %>
+  		    <%= render 'business', business: business %>
+  		    <% if index % 4 == 3 %>
+  		      <p style="visibility: hidden;">Hello</p>
+  		    <% end %>
+  		  <% end %>
+  		</div>
+  	</div>
+  	
+  	<center>
+  	 <%= will_paginate @businesses, :previous_label => '← Prev' %>
+  	</center>
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>

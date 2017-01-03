@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-md-5 col-xs-12 pull-left">
+    <div class="signup-left-panel">
+      <div class="input-info">
+				<h3 style="color: #00bcd4!important;">Some instructions</h3>
+			</div>
+      <br></br>
+      <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>
+    </div>
+  </div>
+  <div class="col-md-6 col-md-offset-1 col-xs-12">
+    <div class="main-grid">
+    	<div class="agile-grids">
+    		<div class="grids">
+    			<div class="forms-grids">
+    				<div class="forms3">
+    				<div class="w3agile-validation w3ls-validation">
+    					<div class="panel panel-widget agile-validation register-form">
+    						<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
+    							<div class="input-info">
+    								<h3 style="color: #00bcd4!important;">Register</h3>
+    							</div>
+    							<div class="form-body form-body-info">
+    								<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                      <div style="margin-bottom: 1em; color: red">
+                        <%= devise_error_messages! %>  
+                      </div>
+    								  
+    								  <div class="form-group valid-form">
+    								    <%= f.text_field :name, autofocus: true, class: 'form-control', "required": "true", placeholder: 'Full name' %>
+    								  </div>
+    								  
+    								  <div class="form-group valid-form">
+    								    <p style="color:white; margin-bottom: 1em;">Are you a Buyer/Seller?</p>
+    								    <%= f.select :role, options_for_select(["Buyer", "Seller"], :selected => "Buyer"), {}, { class: 'form-control', "required": "true", "style": "background-color: rgba(20, 21, 22, 0.52);"} %>
+    								  </div>
+    								  
+    								  <div class="form-group has-feedback">
+    										<%= f.email_field :email, class: 'form-control', "filter": "email", "required": "true", "data-error": "That email address is invalid", placeholder: 'Email' %>
+    										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    										<span class="help-block with-errors">Please enter a valid email address</span>
+    									</div>
+    								  
+    								  <div class="form-group valid-form">
+    								    <%= f.password_field :password, autocomplete: "off", class: 'form-control', "required": "true", placeholder: 'Password' %>
+    								  </div>
+    								  
+    								  <div class="form-group valid-form">
+    								    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', "required": "true", placeholder: 'Confirm password' %>
+    								  </div>
+    								  
+    									<div class="form-group">
+    										<div class="radio">
+    											<label>
+    											  <%= f.radio_button :gender, 'female', "required": "true" %> 
+    											  Female
+    											</label>
+    										</div>
+    										<div class="radio">
+    											<label>
+    											  <%= f.radio_button :gender, 'male', "required": "true" %>
+    											  Male
+    											</label>
+    										</div>
+    									</div>
+    									<div class="form-group valid-form">
+    								    <%= f.text_field :location, class: 'form-control', "required": "true", placeholder: 'Your location' %>
+    								  </div>
+    									<div class="form-group">
+    										<%= f.submit "Sign up", class: 'btn btn-primary' %>
+    									</div>
+    								<% end %>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    				<div class="clear"> </div>
+    				</div>
+    			</div>
+    		</div>
+    		<!-- //validation -->
+    	</div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_include_tag "valida.2.1.6.min", "data-turbolinks-track" => true  %>
+<%= javascript_include_tag "validator.min", "data-turbolinks-track" => true  %>
+
+<script type="text/javascript" >
+	$(document).ready(function() {
+		$('#new_user').valida();
+	});
+</script>

@@ -1,0 +1,106 @@
+<div class="agileits_header">
+	<div class="w3l_offers">
+		<a href="products.html">Today's special Offers !</a>
+	</div>
+	<div class="w3l_search">
+		<form action="/search" method="get">
+			<input type="text" name="query" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+			<input type="submit" value=" ">
+		</form>
+	</div>
+	<div class="w3l_header_right">
+		<ul>
+			<li class="dropdown profile_details_drop">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+				<div class="mega-dropdown-menu">
+					<div class="w3ls_vegetables">
+						<ul class="dropdown-menu drp-mnu">
+						  <% if user_signed_in? %>
+						    <li>
+								  <%= link_to destroy_user_session_path, method: :delete do %>
+                    Sign Out
+                  <% end %>
+								</li>
+						  <% else %>
+						    <li>
+								  <%= link_to 'Sign In', new_user_session_path %>
+								</li> 
+								<li>
+								  <%= link_to 'Sign Up', new_user_registration_path %>
+								</li>
+						  <% end %>
+						</ul>
+					</div>                  
+				</div>	
+			</li>
+		</ul>
+	</div>
+	<div class="w3l_header_right1">
+		<h2>
+		  <% if user_signed_in? %>
+		    <%= link_to 'Sell Here', new_business_path %>
+		  <% else %>
+		    <%= link_to 'Sell Here', new_user_session_path %>
+		  <% end %>
+		</h2>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+
+<div class="logo_products">
+	<div class="container">
+		<div class="w3ls_logo_products_left">
+			<h1><a href="<%= root_path %>"><span>OLX for</span> Business</a></h1>
+		</div>
+		<div class="w3ls_logo_products_left1">
+			<ul class="special_items">
+			  <li class="dropdown special_item">
+          <div>
+            How to
+            <span class="caret"></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a href="/business/buy">Buy Business</a></li>
+            <li><a href="/business/sell">Sell Business</a></li>
+          </ul>
+        </li>
+        <i>/</i>
+        
+        <li><a href="/#stories">Success Stories</a><i>/</i></li>
+        
+        <li class="dropdown special_item">
+          <div>
+            Our Services
+            <span class="caret"></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a href="/services/buyers">For Buyers</a></li>
+            <li><a href="/services/sellers">For Sellers</a></li>
+            <li><a href="/services/investors">For Investors</a></li>
+          </ul>
+        </li>
+        <i>/</i>
+        
+        <li class="dropdown special_item">
+          <div>
+            Business Help
+            <span class="caret"></span>
+          </div>
+          <ul class="dropdown-menu">
+            <li><a href="/help/value">Find Value of Your Business</a></li>
+            <li><a href="/help/legal">Legal Help from Lawyers</a></li>
+            <li><a href="/help/financing">Financing for your Business</a></li>
+          </ul>
+        </li>
+        <i>/</i>
+			  
+			  <li><a href="/#footer">Contact Us</a></li>
+				<!--<li><a href="events.html">Events</a><i>/</i></li>-->
+			</ul>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+
+<hr class="header-hr"></hr>
+<!-- //header -->
