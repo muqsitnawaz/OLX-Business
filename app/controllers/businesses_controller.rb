@@ -4,6 +4,14 @@ class BusinessesController < ApplicationController
     @businesses = Business.search(@query).paginate(:page => params[:page], :per_page => 12)
   end
   
+  def advanced_search
+  end
+  
+  def advanced_search_results
+    @businesses = Business.where(industry: params[:industry], city: params[:city], state: params[:state], price: (params[:price_min].to_i)..(params[:price_max].to_i))
+    @businesses = @businesses.paginate(:page => params[:page], :per_page => 12)
+  end
+  
   def new
     @business = Business.new
   end
@@ -12,6 +20,9 @@ class BusinessesController < ApplicationController
     @business = current_user.businesses.build(business_params)
     
     if @business.save
+      # Sending email
+      UserMailer.create_business(current_user).deliver
+      
       redirect_to @business
     else
       render 'new'

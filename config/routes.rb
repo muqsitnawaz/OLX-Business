@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :businesses
   get '/search' => 'businesses#search', :as => 'search'
+  get '/advanced_search' => 'businesses#advanced_search', :as => 'advanced_search'
+  post '/advanced_search_results' => 'businesses#advanced_search_results', :as => 'advanced_search_results'
   
   # Static Pages
   get 'business/buy' => 'static_pages#buy'

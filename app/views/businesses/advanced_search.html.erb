@@ -1,0 +1,80 @@
+<%= render 'layouts/header' %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 col-xs-12">
+    <div class="main-grid">
+    	<div class="agile-grids">	
+    		<div class="grids">
+    			<div class="forms-grids">
+    				<div class="forms3">
+      				<div class="w3agile-validation w3ls-validation">
+      					<div class="panel panel-widget agile-validation register-form">
+      						<div class="validation-grids widget-shadow" data-example-id="basic-forms"> 
+    								<div class="input-info">
+    									<h3 style="color: #00bcd4!important;">Login</h3>
+    								</div>
+    								<div class="form-body form-body-info">
+    									<%= form_tag '/advanced_search_results' do %>
+    										<div class="form-group">
+    										  <p class="text-white">Industry:</p>
+    										  <%= select_tag :industry, options_for_select(get_all_categories.sort!, :selected => "Accounting & Finance"), {class: 'form-control', "required": "true", "style": "background-color: rgba(20, 21, 22, 0.52);"} %>
+    										</div>
+    										<div class="form-group">
+    											<p class="text-white">City:</p>
+    											<%= select_tag :city, options_for_select(get_all_cities, :selected => "Karachi"), { class: 'form-control', "required": "true", "style": "background-color: rgba(20, 21, 22, 0.52);"} %>
+    										</div>
+    										<div class="form-group">
+    										  <p class="text-white">State:</p>
+    											<%= select_tag :state, options_for_select(["Punjab", "Sindh", "KPK", "Balochistan"], :selected => "Punjab"), { class: 'form-control', "required": "true", "style": "background-color: rgba(20, 21, 22, 0.52);"} %>
+    										</div>
+    										<div class="form-group">
+    										  <p class="text-white">Investment Range:</p>
+    										  <input id="price_range" class="form-control" style="margin: 0.5em 0 1em 0;" value="Rs. 10,000.00 - Rs. 1,000,000.00"></input>
+    											<%= hidden_field_tag 'price_min' %>
+    											<%= hidden_field_tag 'price_max' %>
+    											
+    											<div id="the_slider"></div>
+    										</div>
+    										
+    										<!-- submit button-->
+    										<div class="bottom">
+    											<div class="form-group">
+    												<%= submit_tag "Search Business", class: "btn btn-primary" %>
+    											</div>
+    											<div class="clearfix"> </div>
+    										</div>
+    										<!-- //submit button-->
+    									<% end %>
+    								</div>
+      						</div>
+      					</div>
+      				</div>
+    				</div> <!--end of forms3-->
+    				<div class="clear"> </div>
+    			</div>
+    		</div>
+    	</div>
+    </div> <!--end of maingrid-->
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var slider = $("#the_slider").slider({
+        range: true,
+        min: 10000,
+        max: 10000000,
+        values: [10000, 1000000],
+        slide: function(event, ui) {
+          $("#price_min").val(ui.values[0]);
+          $("#price_max").val(ui.values[1]);
+          $("#price_range").val('Rs. '+ui.values[0].toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')+ " - Rs. " + ui.values[1].toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+        }
+    });
+    $("#price_min").val(slider.slider("values")[0]);
+    $("#price_max").val(slider.slider("values")[1]);
+    $("#price_range").val('Rs. '+ui.values[0].toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')+ " - Rs. " + ui.values[1].toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+  });
+</script>
+
+<%= render 'layouts/footer' %>

@@ -49,6 +49,12 @@ end
 gem "font-awesome-rails"
 
 gem 'devise'
+
 gem 'search_cop'
 gem 'faker'
+
 gem 'will_paginate', '~> 3.1.0'
+
+gem 'jquery-ui-rails'
+
+gem 'carrierwave'
